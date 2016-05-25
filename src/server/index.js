@@ -67,7 +67,7 @@ app.get('/auth/twitter/callback', passport.authenticate('twitter', {
 //	successRedirect : '/welcome',
 	successRedirect : '/',
 	failureRedirect : '/'
-}))
+}));
 
 app.get('/auth/facebook', passport.authenticate('facebook'))
 app.get('/auth/facebook/callback', passport.authenticate('facebook', {
