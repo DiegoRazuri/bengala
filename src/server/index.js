@@ -29,7 +29,7 @@ const io = socketio(server)
 /* esto no debe estar harcodeado sino sacarlo de una variable DE ENTORNO l
    HAY Q SACARLO A UN ARCHIVO DE CONFIGURACION LA URL DE MONGOOSE
 */
-mongoose.connect('mongodb://localhost/bengala', function(err, res){
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/bengala', function(err, res){
 	if(err) throw err;
 	console.log("conectado con exito a la base de datos");
 })
@@ -138,7 +138,7 @@ io.on('connection', (socket)=>{
 	//luego tengo q hacer el envio pero cuando es una nueva ws
 });
 */
-server.listen(3000, () => console.log("servidor iniciado"))
+server.listen(process.env.PORT || 3000, () => console.log("servidor iniciado"))
 /*
 PORT=80 LINKEDIN_SECRET_KEY=sUuJfZcShRm6MbrX LINKEDIN_API_KEY=771w9ponelb7k0 FACEBOOK_APP_ID=715593598509472 FACEBOOK_APP_SECRET=4b82d62979632cb84e84aca91a1693a8  TWITTER_CONSUMER_KEY=4EUcaY9Er9G0ACtZ9DwjAjvOS TWITTER_CONSUMER_SECRET=3gHfGvQXFCOONrFLdBInVY2Jd98flwEdXimwLVJxEJSR1HySGG npm run start
 ** con los accesos a S3 AWS
